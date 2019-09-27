@@ -1,0 +1,10 @@
+
+Handleliste:
+
+1: tomater
+2: bananer
+3: lørdagsodt
+4: plumbo
+5: oppvaskhansker
+6: melk
+7: kaffe
