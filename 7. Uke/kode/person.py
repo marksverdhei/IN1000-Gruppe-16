@@ -4,21 +4,21 @@ class Person:
         self._navn = navn
         self._alder = alder
 
-    def endreNavn(self, navn):
+    def endre_navn(self, navn):
         self._navn = navn
 
-    def skrivNavn(self):
+    def skriv_navn(self):
         print("Hei, jeg heter", self._navn)
 
-    def skrivAlder(self):
+    def skriv_alder(self):
         print("Jeg er", self._alder, "år gammel.")
 
 person1 = Person("Magnus", 22)
 
 person2 = Person("Nicholas", 30)
 
-person1.skrivNavn()
-person1.skrivAlder()
+person1.skriv_navn()
+person1.skriv_alder()
 
-person2.skrivNavn()
-person2.skrivAlder()
+person2.skriv_navn()
+person2.skriv_alder()
