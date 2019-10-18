@@ -21,3 +21,6 @@ class Motorsykkel:
 
     def __eq__(self, other):
         return self.hentRegNr() == other.hentRegNr()
+
+Motorsykkel("", "123", 0) == Motorsykkel("", "123", 0)
+Motorsykkel("", "123", 0) is Motorsykkel("", "123", 0)
