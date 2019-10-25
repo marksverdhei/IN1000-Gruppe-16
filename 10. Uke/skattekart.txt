@@ -1,0 +1,20 @@
+
+Oppgave: lag en skattekartgenerator.
+
+Skattekartet skal være en klasse der hvert objekt inneholder en nøstet liste.
+Disse nøstede listene inneholder enten tegnet " " for hav, "█" for land,
+eller "X" for skatt.
+
+Start med å lage kartet med bare hav.
+
+Bruk deretter random.randint for å bestemme noen tilfeldige landpunkter.
+Sannsynligheten skal være relativt lav til å begynne med
+
+Nå skal du utfylle landene. Dersom en celle med vann har to eller flere naboer
+som er land, skal denne cellen også oppdateres til å bli til land. Pass på at
+dette skal gjøres uavhengig om du gjør det ovenfra og ned eller nedenfra og opp.
+Altså hvis en celle med hav har blitt nylig oppdatert til land, skal ikke dette telles
+som en landnabo for neste celle.
+
+Til slull skal du velge et tilfeldig punkt der skatten skal befinne seg.
+Dette punktet må være land, og alle naboene til dette punktet må også være land.
