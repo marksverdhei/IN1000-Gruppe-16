@@ -34,7 +34,7 @@ class Skattekart:
             self._rutenett[rad][kol] = "█"
             
     def settSkatt(self):
-        muligeSteder = []
+        muligeSteder = [] # (rad, kol)
         for rad in range(self._hoyde):
             for kol in range(self._bredde):
                 if self._rutenett[rad][kol] == "█":

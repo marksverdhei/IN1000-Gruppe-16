@@ -2,29 +2,34 @@ import random
 
 
 class Skattekart:
-    _hav = "\u001b[34;1m█\u001b[0m"
-    _land = "\u001b[33;1m█\u001b[0m"
-    _skatt = "\u001b[43m\u001b[31mX\u001b[0m"
-    def __init__(self, hoyde, bredde):
+    _hav = "\u001b[44m \u001b[0m"
+    _land = "\u001b[43;1m \u001b[0m"
+    _skatt = "\u001b[43;1m\u001b[31mX\u001b[0m"
+    
+    def __init__(self, hoyde, bredde, landmasse=2, antallSkatter=1):
         self._hoyde = hoyde
         self._bredde = bredde
         self._rutenett = []
-        self.genererKart()
-        self.oppdaterLand()
-        self.settSkatt()
+        self._genererKart()
+        
+        for i in range(landmasse):
+            self._oppdaterLand()
+            
+        for i in range(antallSkatter):    
+            self._settSkatt()
         
         
-    def genererKart(self):
+    def _genererKart(self):
         for i in range(self._hoyde):
             rad = []
             for j in range(self._bredde):
-                if random.randint(1, 10) > 1:
-                    rad.append(self._hav)
-                else:
+                if random.randint(1, 10) == 1:
                     rad.append(self._land)
+                else:
+                    rad.append(self._hav)
             self._rutenett.append(rad)
         
-    def oppdaterLand(self):
+    def _oppdaterLand(self):
         landKordinater = []
         for i in range(self._hoyde):
             for j in range(self._bredde):
@@ -35,18 +40,19 @@ class Skattekart:
         for i, j in landKordinater:
             self._rutenett[i][j] = self._land
     
-    def settSkatt(self):
-        irange = list(range(self._hoyde))
-        random.shuffle(irange)
-        jrange = list(range(self._bredde))
-        random.shuffle(jrange)
+    def _settSkatt(self):
+        muligeSkatter = []
         
-        for i in irange:
-            for j in jrange:
+        for i in range(self._hoyde):
+            for j in range(self._bredde):
                 if self._rutenett[i][j] == self._land:
-                    if self.finnNabo(i, j).count(self._hav) == 0:
-                        self._rutenett[i][j] = self._skatt
-                        return
+                    naboer = self.finnNabo(i, j)
+                    if naboer.count(self._hav) == 0 and naboer.count(self._skatt) == 0:
+                        muligeSkatter.append((i, j))
+                        
+        if muligeSkatter:
+            sRad, sKol = random.choice(muligeSkatter)
+            self._rutenett[sRad][sKol] = self._skatt
         
     def finnNabo(self, rad, kol):
         naboer = []
@@ -72,4 +78,9 @@ class Skattekart:
 hoyde = int(input("Skriv høyde: "))
 bredde = int(input("Skriv bredde: "))
 kart = Skattekart(hoyde, bredde)
+kart.skrivUt()
+
+landmasse = int(input("Skriv inn landmasse: "))
+antallskatter = int(input("Skriv inn antall skatter: "))
+kart = Skattekart(hoyde, bredde, landmasse, antallskatter)
 kart.skrivUt()
